@@ -1,0 +1,31 @@
+<div class="container">
+
+<h1 style="margin-top:10%; text-align: center; font-size: 50px">보낸 메일함</h1>
+<table class="table table-bordered" style="margin-top: 4%">
+    <thead>
+        <tr>
+            <th>받는 사람</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>보낸 시간</th>
+        </tr>
+        <% @every_post.each do |p| %>
+        <tbody>
+            <tr>
+                <td><%= p.tTitle %></td>
+                <td><%= p.subject %></td>
+                <td><%= p.content %></td>
+                <td><%= p.created_at.in_time_zone("Asia/Seoul").strftime("%Y년%m월%d일 %H시%M분%S초") %></td>
+                <td>
+                    <a href="/update_view/<%= p.id %>">[수정]</a>
+                    <a href="/destroy/<%= p.id %>">[삭제]</a>
+                </td>
+            </tr>
+        </tbody>
+        <% end %>
+        
+    </thead>
+  
+</table>
+<h1 style=" margin-top: 10%; text-align: center"><a href="/">새로운 이메일 작성</a></h1>
+</div>
